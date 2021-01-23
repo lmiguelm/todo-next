@@ -6,8 +6,7 @@ export default async function connectToDatabase() {
   if(mongoose.connection.readyState >= 1) {
     return;
   }
-
-  const url = `mongodb+srv://root:${process.env.MONGODB_PASSWORD}@cluster0.z8fug.mongodb.net/${process.env.MONGODB_DATABASE}?retryWrites=true&w=majority`;
-  mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology : true, useCreateIndex: true});
+  
+  mongoose.connect(process.env.MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology : true, useCreateIndex: true});
   return mongoose;
 }

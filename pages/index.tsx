@@ -4,7 +4,6 @@ import Lottie from 'react-lottie';
 
 import Head from 'next/head'
 import Link from 'next/link';
-import Image from 'next/image';
 
 import { Container, LoginContainer, TitleContainer } from '../styles/pages/index';
 
@@ -42,7 +41,7 @@ export default function Home() {
   }
 
   return (
-    <div>
+    <>
       <Head>
         <title>Entrar</title>
       </Head>
@@ -94,7 +93,7 @@ export default function Home() {
           )}
         </LoginContainer>
       </Container>
-    </div>
+    </>
 
   )
 }

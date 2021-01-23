@@ -24,6 +24,6 @@ export default async function Login(req: NextApiRequest, res: NextApiResponse) {
     return res.json(user);
 
   } catch (e) {
-    return res.status(400).json({message: e.message});
+    return res.status(400).json({message: e.message || 'Erro inesperado.'});
   }
 }

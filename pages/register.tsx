@@ -26,7 +26,7 @@ const initialState = {
 export default function Register() {
 
   const [newUser, setNewUser] = useState(initialState);
-  const [confirmPassword, setConfirmPassword] = useState('asas');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [enableButton, setEnableButton] = useState(false);
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
@@ -94,7 +94,7 @@ export default function Register() {
                 <Header>
                   <Link href="/">
                     <a>
-                      <FiArrowLeft id="back" />
+                      <FiArrowLeft size={20} id="back" />
                     </a>
                   </Link>
                   <h1>Preencha o formulário de cadastro</h1>

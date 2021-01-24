@@ -1,6 +1,7 @@
-import { FormEvent, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
 import axios from 'axios';
 import Lottie from 'react-lottie';
+import {useRouter} from 'next/router';
 
 import Head from 'next/head'
 import Link from 'next/link';
@@ -10,7 +11,9 @@ import { Container, LoginContainer, TitleContainer } from '../styles/pages/index
 import loadingGif from '../public/assets/loading.json';
 import bannerGif from '../public/assets/banner.json';
 
-interface Login {
+import { useAuth } from '../context/auth';
+
+interface loginData {
   email: string;
   password: string;
 }
@@ -22,19 +25,28 @@ const initialState = {
 
 export default function Home() {
 
-  const [login, setLogin] = useState<Login>(initialState);
+  const [loginData, setLoginData] = useState<loginData>(initialState);
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+
+  const { login, signed } = useAuth();
+
+  const router = useRouter();
+
+  useEffect(() => {
+    if(signed) router.push('/dashboard')
+  }, []);
 
   async function handleLogin(e: FormEvent) {
     e.preventDefault();
     setLoading(true);
     
     try {
-      await axios.post('/api/users/login', { ...login });
+      await login(loginData.email, loginData.password);
+      router.push('/dashboard');
     } catch (e) {
-      setLogin(initialState);
-      setErrorMessage(e.response.data.message);
+      setLoginData(initialState);
+      setErrorMessage(e);
     } finally {
       setLoading(false);
     }
@@ -82,8 +94,8 @@ export default function Home() {
               ) : (
                 <>
                   <form onSubmit={handleLogin}>
-                    <input onChange={e => setLogin({...login, email: e.target.value})} value={login.email} placeholder="E-mail" type="email" required/>
-                    <input onChange={e => setLogin({...login, password: e.target.value})} value={login.password} placeholder="Senha" type="password" required/>
+                    <input onChange={e => setLoginData({...loginData, email: e.target.value})} value={loginData.email} placeholder="E-mail" type="email" required/>
+                    <input onChange={e => setLoginData({...loginData, password: e.target.value})} value={loginData.password} placeholder="Senha" type="password" required/>
                     <button>ENTRAR</button>
                   </form>
                   <span>não tem conta ? <Link href="/register"><a>Registre-se</a></Link></span>

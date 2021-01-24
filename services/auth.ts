@@ -26,6 +26,10 @@ export async function validateToken(userToken: string): Promise<string> {
   
     jwt.verify(token, process.env.SECRET_KEY as string, (err, decoded: any) => {
       if(err) {
+        console.log(err);
+        console.log(token)
+        console.log(process.env.SECRET_KEY)
+        console.log(process.env.MONGODB_URL)
         return reject('Token inválido');
       }
       

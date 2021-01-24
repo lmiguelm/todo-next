@@ -21,7 +21,7 @@ export default async function Login(req: NextApiRequest, res: NextApiResponse) {
     if(!compare(password, user.password)) {
       throw new Error('Senha inválida.');
     }
-
+    
     const token = await generateToken(user._id);
 
     res.setHeader('Authotization', token);

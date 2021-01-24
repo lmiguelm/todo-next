@@ -3,13 +3,17 @@ import { ThemeProvider } from 'styled-components';
 import theme from '../styles/theme';
 import GlobalStyle from '../styles/global';
 
+import { AuthProvider } from '../context/auth';
+
 function MyApp({ Component, pageProps }) {
   return (
     <>
-      <ThemeProvider theme={theme}>
-        <Component {...pageProps} />
-        <GlobalStyle/>
-      </ThemeProvider>
+      <AuthProvider>
+        <ThemeProvider theme={theme}>
+          <Component {...pageProps} />
+          <GlobalStyle/>
+        </ThemeProvider>
+      </AuthProvider>
     </>
   );
 }

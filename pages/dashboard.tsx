@@ -9,6 +9,7 @@ import Aside from '../components/Aside';
 import { Container, Content,MenuHide } from '../styles/pages/dashboard';
 
 import { useAuth } from '../context/auth';
+import Todo from '../components/Todo';
 
 export default function Dashboard() {
 
@@ -54,7 +55,8 @@ export default function Dashboard() {
         )}
 
         <Content>
-          <p>miguel</p>
+          <Todo/>
+          <Todo/>
         </Content>
       </Container>  
     </>

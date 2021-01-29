@@ -1,7 +1,8 @@
 import { FormEvent, useEffect, useState } from 'react';
-import axios from 'axios';
 import Lottie from 'react-lottie';
 import {useRouter} from 'next/router';
+
+import { FiX } from 'react-icons/fi';
 
 import Head from 'next/head'
 import Link from 'next/link';
@@ -34,7 +35,8 @@ export default function Home() {
   const router = useRouter();
 
   useEffect(() => {
-    if(signed) router.push('/dashboard')
+    console.log(signed);
+    if(signed) router.push('/dashboard');
   }, []);
 
   async function handleLogin(e: FormEvent) {
@@ -89,7 +91,7 @@ export default function Home() {
               {errorMessage != '' ? (
                 <div id="error-container">
                   <h2>{errorMessage}</h2>
-                  <p onClick={() => setErrorMessage('')}>x</p>
+                  <FiX className="fix" onClick={() => setErrorMessage('')}/>
                 </div>
               ) : (
                 <>

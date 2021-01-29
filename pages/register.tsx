@@ -11,6 +11,10 @@ import {FiArrowLeft} from 'react-icons/fi';
 
 import loadingGif from '../public/assets/loading.json';
 
+import { useAuth } from '../context/auth';
+
+import { useRouter } from 'next/router';
+
 interface newUser {
   name: string;
   email: string;
@@ -30,6 +34,9 @@ export default function Register() {
   const [enableButton, setEnableButton] = useState(false);
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+
+  const { login } = useAuth();
+  const router = useRouter();
 
   useEffect(() => {
     if(newUser.name != '' && newUser.email != '' && newUser.password != '' && confirmPassword != '') {
@@ -52,6 +59,8 @@ export default function Register() {
 
     try {
       await axios.post('/api/users/new', { ...newUser });
+      await login(newUser.email, newUser.password);
+      router.push('/dashboard');
     } catch (e) {
       console.log('errooo');
       setErrorMessage(e.response.data.message);

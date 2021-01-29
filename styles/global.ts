@@ -12,4 +12,16 @@ export default createGlobalStyle`
     color: ${props => props.theme.colorSecondary};
     font: 400 16px Roboto, sans-serif;
   }
+
+  ::-webkit-scrollbar-track {
+    background: ${props => props.theme.backgroundSecondary};
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    background: ${props => props.theme.backgroundSecondary};
+  }
+  ::-webkit-scrollbar-thumb {
+    background: ${props => props.theme.colorPrimary};
+  }
 `;

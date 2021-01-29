@@ -61,6 +61,25 @@ export const Container = styled.aside`
         color: #222;
       }
     }
+
+    .deleted {
+      transition: ease .2s;
+
+      &:hover{
+        background: ${props => props.theme.colorFourth};
+      }
+    }
+
+    .new-active {
+      background: ${props => props.theme.colorTerciary};
+      color: #222;
+    }
+    .deleted-active {
+      background: ${props => props.theme.colorFourth};
+    }
+    .other-active {
+      background: ${props => props.theme.colorPrimary};
+    }
   }
 
   .footer {

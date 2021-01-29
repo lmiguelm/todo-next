@@ -43,6 +43,10 @@ export const TodoInfo = styled.div`
     color: ${props => props.theme.colorTerciary};
     text-decoration: line-through;
   }
+  .deleted {
+    color: ${props => props.theme.colorFourth};
+    text-decoration: line-through;
+  }
 `;
 
 export const ArrowContainer = styled.div`

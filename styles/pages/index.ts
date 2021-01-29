@@ -118,16 +118,15 @@ export const LoginContainer = styled.div`
 
   #error-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     width: 100%;
 
     h2 {
       color: ${props => props.theme.colorSecondary};
-      text-decoration: underline;
     }
 
-    p {
+    .fix {
       color: red;
       cursor: pointer;
       transition: ease .2s;

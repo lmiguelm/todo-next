@@ -17,8 +17,17 @@ export const Content = styled.div`
   flex-direction: column;
 
   width: 100%;
+  height: 100vh;
 
   padding: 20px;
+
+  overflow: auto;
+
+  @media(max-width: 768px) {
+    margin-top: 100px;
+    overflow: hidden;
+    height: 100%;
+  }
 `;
 
 export const MenuHide = styled.div`
@@ -29,6 +38,8 @@ export const MenuHide = styled.div`
   display: flex;
   justify-content:space-between;
   align-items:center;
+
+  position: fixed;
 
   padding: 30px;
 
@@ -48,6 +59,41 @@ export const MenuHide = styled.div`
 
     &:hover {
       opacity: .7;
+    }
+  }
+`;
+
+export const NotFoundContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  height: 100%;
+
+  button {
+
+    width: 100%;
+    max-width: 250px;
+
+    height: 50px;
+    border: none;
+    border-radius: 8px;
+    color: ${props => props.theme.colorSecondary};
+    font-size: 16px;
+    background: ${props => props.theme.colorPrimary};
+    font-weight: bold;
+    margin-top: 30px;
+    cursor: pointer;
+    transition: ease .2s;
+
+    &:hover {
+      opacity: .7;
+    }
+
+    &:focus {
+      outline: none;
+      border: 2px solid ${props => props.theme.colorPrimary}
     }
   }
 `;

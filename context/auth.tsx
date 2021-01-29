@@ -5,6 +5,7 @@ interface AuthContextData {
   signed: boolean;
   login(email: string, password: string): void;
   logout(): void;
+  token: string;
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
@@ -13,6 +14,7 @@ export const AuthProvider: React.FC = ({ children }) => {
 
   const [signed, setSigned] = useState(false);
   const [user, setUser] = useState({});
+  const [token, setToken] = useState('');
 
 
   useEffect(() => {
@@ -63,7 +65,7 @@ export const AuthProvider: React.FC = ({ children }) => {
   }
 
   return (
-    <AuthContext.Provider value={{ signed, login, logout }}>  
+    <AuthContext.Provider value={{ signed, login, logout, token }}>  
         {children}
     </AuthContext.Provider>
   );

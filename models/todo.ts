@@ -15,7 +15,7 @@ const TodoSchema = new mongoose.Schema({
   status: {
     type: String,
     required: true,
-    enum: ['open', 'in progress', 'resolved'],
+    enum: ['open', 'resolved', 'deleted'],
     default: 'open'
   },
   createdAt: {
@@ -24,7 +24,7 @@ const TodoSchema = new mongoose.Schema({
   },
   lastUpdate: {
     type: Date,
-    default: null
+    default: null 
   },
   user: {
     type: mongoose.Types.ObjectId,
